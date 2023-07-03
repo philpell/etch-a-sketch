@@ -1,0 +1,72 @@
+body{
+    display: flex;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    align-items: center;
+    flex-direction: column;
+    background-color: mediumseagreen;
+    margin-top: -30px;
+}
+
+.container {
+    margin-top: -1%;
+    border-radius: 20px;
+    background-color: red;
+    height: 550px;
+    width: 700px;
+    margin-bottom: 10px;
+}
+
+h1{
+    font-size: 80px;
+    color: gold;
+    text-shadow: 5px 5px rgb(255, 0, 0);
+}
+
+.grid{
+    display: inline-grid;
+    grid-template-columns: repeat(16, 2fr);
+    grid-template-rows: repeat(16, 2fr);
+    margin: 40px 150px;
+    height: 400px;
+    width: 400px;
+    outline: rgb(5, 5, 5) solid 2px;  
+}
+
+.cell{
+    background-color: white;
+    border: 1px solid black (255, 255, 255);
+}
+
+.buttons{
+    display: flex;
+    justify-content: space-evenly;
+    margin: -10px;
+}
+
+button{
+    width: 80px;
+    font-size: 24px;
+    background-color: white;
+    box-shadow: 5px 5px;
+    border-radius: 100px;
+    width: 140px;
+    height: 50px;
+}
+
+button:hover{
+    transform: scale(1.1);
+
+}
+
+button:active{
+    transform: scale(1.2);
+}
+
+h3 {
+    font-size: 20px;
+    color: gold;
+    text-shadow: 5px 5px rgb(255, 0, 0);
+    writing-mode: vertical-lr;
+    margin-left: 100%;
+    margin-top: -10%;
+}
