@@ -13,7 +13,7 @@ body{
     background-color: red;
     height: 550px;
     width: 700px;
-    margin-bottom: 10px;
+    box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
 }
 
 h1{
@@ -24,12 +24,10 @@ h1{
 
 .grid{
     display: inline-grid;
-    grid-template-columns: repeat(16, 2fr);
-    grid-template-rows: repeat(16, 2fr);
-    margin: 40px 150px;
-    height: 400px;
-    width: 400px;
-    outline: rgb(5, 5, 5) solid 2px;  
+    margin: 50px 150px 40px 150px;
+    min-height: 400px;
+    min-width: 400px;
+    outline: black auto 2px;
 }
 
 .cell{
@@ -69,4 +67,37 @@ h3 {
     writing-mode: vertical-lr;
     margin-left: 100%;
     margin-top: -10%;
+}
+
+.gridSize{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    /* margin-left: 7%;
+    margin-bottom: -8%; */
+}
+
+
+#plusBtn{
+    height: 40px;
+    width: 40px;
+} 
+#minusBtn{
+    height: 40px;
+    width: 40px;
+} 
+
+#currentSize{
+    height: 40px;
+    width: 40px;
+    background-color: white;
+    outline: black auto 2px;
+    text-align: center;
+}
+
+#minus{
+    height: 40px;
+    width: 40px;
+    margin: 280px 1000px -100px 50px;
+
 }
