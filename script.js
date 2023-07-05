@@ -1,5 +1,5 @@
 //Sets the inital grid size to 16 x 16
-let num = 16 //prompt('size?')
+let num = 32
 
 //Uses the num input to create a grid with the specified number of rows and columns 
 const grid = document.querySelector('.grid');
@@ -12,10 +12,13 @@ for (let i = 0; i < num*num; i++) {
     const cells = document.createElement('div');
     cells.classList.add('cell');
     cells.addEventListener('mouseover', function(e){
-        e.target.style.backgroundColor = 'black';
-        return cells   
-    })
-    grid.appendChild(cells); 
+        if(colour.textContent.trim() === 'Random'){
+            e.target.style.backgroundColor = 'black';
+        } else{
+            e.target.style.backgroundColor = selectColour();
+        }
+})
+grid.appendChild(cells); 
 }
 };
 
@@ -26,6 +29,7 @@ createGrid();
 const shake = document.querySelector('#shake');
 shake.addEventListener('click', clearGrid);
 
+//Function to reset all of the cells to white
 function clearGrid(){
     cells = grid.children;
     for (let i = 0; i < num*num; i++) {
@@ -33,18 +37,16 @@ function clearGrid(){
     }
 };
 
-//Event listener to change the colour of the cell based on button click
+//Event listener to change the button text based on button click
 const colourBtn = document.querySelector('#colour');
 colourBtn.addEventListener('click', changeColour);
 
 //Function to change the colour of the cells
 function changeColour(){
-    if(colour.textContent.trim()   === 'Rainbow'){
+    if(colour.textContent === 'Random'){
         document.getElementById("colour").textContent = "Black";
-        createGrid();
     } else{
-        document.getElementById("colour").textContent = "Rainbow";
-        createGrid();
+        document.getElementById("colour").textContent = "Random";  
     }
 }
 
@@ -52,27 +54,47 @@ function changeColour(){
 const sizeBtn = document.querySelector('#size');
 sizeBtn.addEventListener('click', changeSize);
 
-//Function to change the size of the cells
+//Function to change cell size and create new grid
 function changeSize(){
     if(size.textContent.trim()   === 'Medium'){
-        clearGrid();
-        //change button text to the next size
-        document.getElementById("size").textContent = "Large";
-        //Set the size of the cell
-        num = 16;
-        grid.setAttribute('style', `grid-template-columns: repeat(${num}, 2fr); grid-template-rows: repeat(${num}, 2fr);`);
-        createGrid();
+        setMedium();
     } else if(size.textContent.trim() === 'Large'){
-        clearGrid();
-        document.getElementById("size").textContent = "Small";
-        num = 8;
-        grid.setAttribute('style', `grid-template-columns: repeat(${num}, 2fr); grid-template-rows: repeat(${num}, 2fr);`);
-        createGrid();
+        setLarge();
     } else {
-        clearGrid();
-        document.getElementById("size").textContent = "Medium";
-        num = 32;
-        grid.setAttribute('style', `grid-template-columns: repeat(${num}, 2fr); grid-template-rows: repeat(${num}, 2fr);`);
-        createGrid();
+        setSmall();
     }
+}
+
+function setLarge(){
+    //clear current grid
+    clearGrid();
+    //Set cell size
+    document.getElementById("size").textContent = "Small";
+    num = 16;
+    //Define grid rows and columns
+    grid.setAttribute('style', `grid-template-columns: repeat(${num}, 2fr); grid-template-rows: repeat(${num}, 2fr);`);
+    //Create new grid
+    createGrid();
+}
+
+function setMedium(){
+    clearGrid();
+    document.getElementById("size").textContent = "Large";
+    num = 32;
+    grid.setAttribute('style', `grid-template-columns: repeat(${num}, 2fr); grid-template-rows: repeat(${num}, 2fr);`);
+    createGrid();
+}
+
+function setSmall(){
+    clearGrid();
+    document.getElementById("size").textContent = "Medium";
+    num = 64;
+    grid.setAttribute('style', `grid-template-columns: repeat(${num}, 2fr); grid-template-rows: repeat(${num}, 2fr);`);
+    createGrid();
+}
+
+//Choose random colour
+function selectColour(){
+    const randomColour = "#" + (Math.floor(Math.random()*16777215).toString(16));
+    return randomColour
 }

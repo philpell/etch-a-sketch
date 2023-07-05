@@ -73,31 +73,5 @@ h3 {
     display: flex;
     flex-direction: column;
     justify-content:space-between;
-    /* margin-left: 7%;
-    margin-bottom: -8%; */
 }
 
-
-#plusBtn{
-    height: 40px;
-    width: 40px;
-} 
-#minusBtn{
-    height: 40px;
-    width: 40px;
-} 
-
-#currentSize{
-    height: 40px;
-    width: 40px;
-    background-color: white;
-    outline: black auto 2px;
-    text-align: center;
-}
-
-#minus{
-    height: 40px;
-    width: 40px;
-    margin: 280px 1000px -100px 50px;
-
-}
